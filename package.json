@@ -1,33 +1,38 @@
 {
-	"name": "react-typescript",
-	"version": "1.0.0",
-	"description": "React and TypeScript example starter project",
-	"keywords": [
-		"typescript",
-		"react",
-		"starter"
-	],
-	"main": "src/index.tsx",
-	"dependencies": {
-		"react": "^17.0.2",
-		"react-dom": "^17.0.2",
-		"react-scripts": "^5.0.0"
-	},
-	"devDependencies": {
-		"@types/react": "^17.0.20",
-		"@types/react-dom": "^17.0.9",
-		"typescript": "^4.4.2"
-	},
-	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test --env=jsdom",
-		"eject": "react-scripts eject"
-	},
-	"browserslist": [
-		">0.2%",
-		"not dead",
-		"not ie <= 11",
-		"not op_mini all"
-	]
+  "name": "react-typescript",
+  "version": "1.0.0",
+  "description": "React and TypeScript example starter project",
+  "keywords": [
+    "typescript",
+    "react",
+    "starter"
+  ],
+  "main": "src/index.tsx",
+  "dependencies": {
+    "css-loader": "^6.5.1",
+    "css-modules-name": "^0.0.5",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "webpack": "^5.65.0"
+  },
+  "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.4",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "react-refresh": "^0.11.0",
+    "typescript": "^4.5.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.1"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --config config/webpack.dev"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
