@@ -25,7 +25,6 @@ function Modal(props: MemoModal) {
 			root?.append(container)
 			return () => {
 				container.remove()
-				ReactDOM.unmountComponentAtNode(container)
 			}
 		}
 	}, [props.visible])
