@@ -1,4 +1,12 @@
-import { hooks } from "react-tentacle"
+import { hooks, scheduler } from "react-tentacle"
+
+const message = scheduler<{time: number}>()
+
+message.subscribe(state => {
+	console.log(state.time)
+}, {
+	deps: ["time"]
+})
 
 function Tentacle() {
 	const [state, setState] = hooks.useReactives<{
@@ -19,6 +27,7 @@ function Tentacle() {
 
 	const click = () => {
 		setState({age: new Date().valueOf()})
+		message.dispatch({time: 125})
 		console.log("crrentState", state.age)
 	}
 
