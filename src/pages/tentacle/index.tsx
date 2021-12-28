@@ -1,6 +1,10 @@
 import { hooks, scheduler } from "react-tentacle"
 
-const message = scheduler<{time: number}>()
+interface State {
+	time: number
+}
+
+const message = scheduler<State>()
 
 message.subscribe(state => {
 	console.log(state.time)
