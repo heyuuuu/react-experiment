@@ -3,34 +3,34 @@ import ReactDOM from "react-dom"
 
 import { WrapContext, useModalConext } from "./WrapContext"
 
-interface MemoModal {
+interface Props extends WrapContext {
 	visible?: boolean
-	onClose?: (data: unknown) => void
-	children?: JSX.Element | null
 }
 
 interface Modal {
-	(props: MemoModal): JSX.Element | null
+	(props: Props): JSX.Element | null
 	useModalConext: typeof useModalConext
 }
 
 const root = document.querySelector("#modal-root")
 
-function Modal(props: MemoModal) {
+function Modal(props: Props) {
 
+	const { visible, ...wrapProps } = props
+	
 	const container = useMemo(() => document.createElement("div"), [])
 
 	useLayoutEffect(() => {
-		if(props.visible) {
+		if(visible) {
 			root?.append(container)
 			return () => {
 				container.remove()
 			}
 		}
-	}, [props.visible])
+	}, [visible])
 
-	if(props.visible) {
-		return ReactDOM.createPortal(<WrapContext onClose={props.onClose}>{props.children}</WrapContext>, container)
+	if(visible) {
+		return ReactDOM.createPortal(<WrapContext {...wrapProps} />, container)
 	} else {
 		return null
 	}

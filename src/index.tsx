@@ -5,6 +5,7 @@ import Home from "./pages/home"
 import Context from "./pages/context"
 import Tentacle from "./pages/Tentacle"
 
+import "animate.css"
 import "./styles/common.css"
 
 const root = document.querySelector("#root")

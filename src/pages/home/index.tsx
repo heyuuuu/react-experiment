@@ -1,4 +1,3 @@
-import { useState } from "react"
 import cssModules from "css-modules-name"
 import styles from "./index.module.css"
 

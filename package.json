@@ -9,6 +9,7 @@
   ],
   "main": "src/index.tsx",
   "dependencies": {
+    "animate.css": "^4.1.1",
     "css-loader": "^6.5.1",
     "css-modules-name": "^0.0.5",
     "html-webpack-plugin": "^5.5.0",

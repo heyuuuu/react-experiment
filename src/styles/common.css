@@ -2,3 +2,15 @@ html, body {
 	margin: 0;
 	padding: 0;
 }
+
+.animated-duration-300 {
+	animation-duration: 0.3s;
+}
+
+.animated-duration-500 {
+	animation-duration: 0.5s;
+}
+
+.visible-hidden {
+	visibility: hidden;
+}

@@ -1,25 +1,27 @@
 import React, { useContext } from "react"
+import Modal from "./modal"
 
-const Context = React.createContext<{
+interface ContextProps {
 	onClose?: (data: unknown) => void
-}>({})
-
-interface Props {
-	onClose?: (data: unknown) => void
-	children?: JSX.Element | null
 }
+
+interface WrapContext extends ContextProps, Modal {
+
+}
+
+const Context = React.createContext<ContextProps>({})
 
 function useModalConext() {
 	const context = useContext(Context)
 	return context
 }
 
-function WrapContext(props: Props) {
+function WrapContext(props: WrapContext) {
 
-	return <Context.Provider value={{
-		onClose: props.onClose
-	}}>
-		{props.children}
+	const { onClose, ...maskProps } = props
+
+	return <Context.Provider value={{onClose}}>
+		<Modal {...maskProps} />
 	</Context.Provider>
 }
 
