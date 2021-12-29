@@ -20,17 +20,22 @@ module.exports = {
 				exclude: /node_modules/,
 			},
 			{
-				test: /\.css$/,
+				test: /\.(css|less)$/,
 				use: [MiniCssExtractPlugin.loader, {
 					loader: "css-loader",
 					options: {
 						modules: {
-							auto: /\.module\.(css|less|scss)$/
+							auto: /\.less$/,
+							localIdentName: "[local]--[hash:base64:5]"
 						}
 					}
 				}],
-				// exclude: /node_modules/,
-			}
+				// exclude: /node_modules/
+			},
+			{
+				test: /\.less$/,
+				loader: "less-loader",
+			},
 		]
 	},
 	plugins: [

@@ -1,6 +1,6 @@
 import cssModules from "css-modules-name"
 
-import styles from "./index.module.css"
+import styles from "./index.less"
 
 const cm = cssModules(styles)
 

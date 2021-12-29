@@ -1,47 +1,26 @@
-import { hooks, scheduler } from "react-tentacle"
-
-interface State {
-	time: number
-}
-
-const message = scheduler<State>()
-
-message.subscribe(state => {
-	console.log(state.time)
-}, {
-	deps: ["time"]
-})
+import { useTentacles } from "@/store"
+import { Button, Input } from "@/components"
 
 function Tentacle() {
-	const [state, setState] = hooks.useReactives<{
-		name: string
-		description: string
-		age: number
-	}>({
-		name: "",
-		description: ""
-	}, ["name"])
+	
+	const [state, setState] = useTentacles(["name", "address"])
 
 	const reset = () => {
 		setState(() => ({
 			name: "",
-			description: "description"
+			address: ""
 		}))
 	}
 
 	const click = () => {
-		setState({age: new Date().valueOf()})
-		message.dispatch({time: 125})
-		console.log("crrentState", state.age)
+		setState({address: new Date().valueOf().toString()})
 	}
 
-	console.log("render: ", state.description)
-
-	return <div>
-		<input value={state.name} onChange={e => setState({name: e.target.value})} />
-		<input value={state.description} onChange={e => setState({description: e.target.value})} />
-		<button onClick={reset}>重置</button>
-		<button onClick={click}>age</button>
+	return <div className="flex">
+		<Input value={state.name} onChange={e => setState({name: e.target.value})} />
+		<Input className="m-l-5" value={state.address} onChange={e => setState({address: e.target.value})} />
+		<Button className="m-l-5" onClick={reset}>重置</Button>
+		<Button className="m-l-5" onClick={click}>address</Button>
 	</div>
 }
 

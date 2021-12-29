@@ -3,13 +3,18 @@ html, body {
 	padding: 0;
 }
 
-.animated-duration-300 {
-	animation-duration: 0.3s;
+p {
+	margin: 0;
+	padding: 0;
 }
 
-.animated-duration-500 {
-	animation-duration: 0.5s;
+.flex {
+	display: flex;
 }
+
+
+.m-l-5{margin-left: 5px}
+.m-r-5{margin-right: 5px}
 
 .visible-hidden {
 	visibility: hidden;

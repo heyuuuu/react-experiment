@@ -1,5 +1,5 @@
 import cssModules from "css-modules-name"
-import styles from "./index.module.css"
+import styles from "./index.less"
 
 const cm = cssModules(styles)
 
@@ -11,9 +11,9 @@ interface Props {
 
 function Area(props: Props) {
 	return <div className={cm("area-container")}>
-		<div className={cm("area-title")}>
-			{props.title}
-			{props.description}
+		<div className={cm("area-header")}>
+			<p className={cm("area-title")}>{props.title}</p>
+			<p className={cm("area-description")}>{props.description}</p>
 		</div>
 		{ props.children }
 	</div>
