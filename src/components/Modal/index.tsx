@@ -10,6 +10,7 @@ interface Props extends WrapContext {
 interface Modal {
 	(props: Props): JSX.Element | null
 	useModalConext: typeof useModalConext
+	create: typeof Create
 }
 
 const root = document.querySelector("#modal-root")
@@ -36,7 +37,29 @@ function Modal(props: Props) {
 	}
 }
 
+function Create(Node: React.ReactChild | React.JSXElementConstructor<unknown>, props?: Props) {
+
+	const container = document.createElement("div")
+
+	const onClose = (data: unknown) => {
+		ReactDOM.unmountComponentAtNode(container)
+		container.remove()
+		props?.onClose?.(data)
+	}
+
+	root?.append(container)
+
+	ReactDOM.render(
+		<WrapContext {...props} onClose={onClose}>
+			{Node instanceof Function ? <Node /> : Node}
+		</WrapContext>
+		,
+		container
+	)
+}
+
 const MemoModal: any = React.memo(Modal)
 MemoModal.useModalConext = useModalConext
+MemoModal.create = Create
 
 export default MemoModal as Modal

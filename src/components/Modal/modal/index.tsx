@@ -7,7 +7,7 @@ const cm = cssModules(styles)
 interface Mask {
 	mask?: boolean // 遮罩
 	middle?: boolean // 是否居中
-	children?: JSX.Element
+	children?: React.ReactNode
 }
 
 function Mask(props: Mask) {

@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import Modal from "./modal"
 
 interface ContextProps {
-	onClose?: (data: unknown) => void
+	onClose?: (data?: unknown) => void
 }
 
 interface WrapContext extends ContextProps, Modal {

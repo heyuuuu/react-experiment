@@ -1,8 +1,9 @@
 import { useState } from "react"
 import cssModules from "css-modules-name"
-import { useAnimation } from "@/hooks"
+import { useAnimation, useReactives } from "@/hooks"
 import { useTentacles } from "@/store"
-import { Modal, Button, Input } from "@/components"
+import { Modal, Button, Input, Label } from "@/components"
+import notice from "@/notice"
 
 import styles from "./index.less"
 
@@ -44,13 +45,30 @@ function Children1() {
 }
 
 function Context() {
-	const [visible, setVisible]=  useState(false)
+
+	const [state, setState] = useReactives<{
+		modalVisible: boolean
+		message: string
+	}>({
+		message: ""
+	})
+
+	const message = () => {
+		notice.message({title: state.message})
+	}
+
 	return <div>
-		<Modal mask middle visible={visible} onClose={() => setVisible(false)}>
+		<Modal mask middle visible={state.modalVisible} onClose={() => setState({modalVisible: false})}>
 			<Children1 />
 		</Modal>
-		<div>
-			<Button onClick={() => setVisible(!visible)}>modal</Button>
+		<div className={cm("flex")}>
+			<Button onClick={() => setState({modalVisible: true})}>modal</Button>
+			<Label className={cm("m-l-5")}>message:</Label>
+			<Input
+				className={cm("m-l-5 m-r-5")}
+				value={state.message}
+				onChange={e => setState({message: e.target.value})} />
+			<Button onClick={message}>message</Button>
 		</div>
 	</div>
 }
