@@ -1,33 +1,30 @@
-import { useLayoutEffect, useRef } from "react"
-import { dispatch, useTentacles } from "@/store"
-
-type ENV = "web" | "wap" | "hwap"
+import { useLayoutEffect } from "react"
+import { useReactives } from "@/hooks"
 
 // 自适应环境判断
 function useClientFit() {
 
-	const [state] = useTentacles([])
+	const [state, setState] = useReactives<{env: "web" | "wap" | "hwap"}>({}, ["env"])
 
-	const prveEnv = useRef<ENV>(state.env)
-
-	const switchEnv = (env: ENV) => {
-		if(prveEnv.current != env) {
-			prveEnv.current = env
-			dispatch({env})
+	const computeENV = () => {
+		const root = document.documentElement
+		const width = root.clientWidth
+		if(width > 750) {
+			setState({env: "web"})
+		} else {
+			setState({env: "wap"})
 		}
 	}
 
 	useLayoutEffect(() => {
-		window.onresize = () => {
-			const root = document.documentElement
-			const width = root.clientWidth
-			if(width > 750) {
-				switchEnv("web")
-			} else {
-				switchEnv("wap")
-			}
+		window.onresize = computeENV
+		computeENV()
+		return () => {
+			window.onresize = null
 		}
 	}, [])
+
+	return state.env
 }
 
 export default useClientFit

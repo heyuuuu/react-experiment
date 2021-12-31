@@ -15,10 +15,11 @@ import "./styles/index.css"
 
 const root = document.querySelector("#root")
 
-
 function App() {
 
-	useClientFit()
+	const ENV = useClientFit()
+
+	console.log("ENV:", ENV)
 
 	return <RecoilRoot>
 		<QueryClientProvider client={tools.queryClient}>
