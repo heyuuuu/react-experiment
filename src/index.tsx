@@ -3,6 +3,7 @@ import { RecoilRoot } from "recoil"
 import { QueryClientProvider } from "react-query"
 import { Area } from "@/components"
 import { tools } from "@/utils"
+import { useClientFit } from "@/hooks"
 
 import Home from "./pages/home"
 import Context from "./pages/context"
@@ -14,7 +15,11 @@ import "./styles/index.css"
 
 const root = document.querySelector("#root")
 
+
 function App() {
+
+	useClientFit()
+
 	return <RecoilRoot>
 		<QueryClientProvider client={tools.queryClient}>
 			<div>
