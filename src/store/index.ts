@@ -5,11 +5,14 @@ type State = {
 	address: string
 }
 
-const { useTentacles } = createTentacle<State>({
+const { useTentacles, useListen, subscribe, unSubscribe } = createTentacle<State>({
 	name: "",
 	address: ""
 })
 
 export {
+	useListen,
+	subscribe,
+	unSubscribe,
 	useTentacles
 }

@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosStatic, AxiosResponse } from "axios"
+import notice from "@/notice"
 
 type Instance = < Data= unknown >(config: AxiosRequestConfig) =>  Promise<Data>
 
@@ -11,7 +12,8 @@ export const musicRequest = axios.create({
 		if(res.data.code == 200) {
 			return res.data.data
 		} else {
-			Promise.reject(res.data)
+			notice.message({title: res.data.msg})
+			return Promise.reject(res.data.msg)
 		}
 	})
 }

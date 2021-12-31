@@ -3,13 +3,20 @@ import cssModules from "css-modules-name"
 import { useRecoilValue } from "recoil"
 import { useQuery } from "react-query"
 import { Input, Label } from "@/components"
-import { useTentacles } from "@/store"
+import { useTentacles, subscribe } from "@/store"
 import { userInfoAtom } from "@/atom"
+import notice from "@/notice"
 import service from "@/service"
 import styles from "./index.less"
 
 
 const cm = cssModules(styles)
+
+subscribe(state => {
+	if(state.address) {
+		notice.message({title: state.address})
+	}
+}, ["address"])
 
 function Home () {
 	

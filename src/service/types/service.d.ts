@@ -1,7 +1,10 @@
 declare namespace ServiceSpace {
-	interface MusicResultData<Result = unknown> {
+	type MusicResultData<Result = unknown> = {
 		code: number
 		data: Result
 		message: string
+	} & {
+		code: number
+		msg: string
 	}
 }
