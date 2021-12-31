@@ -1,8 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosStatic, AxiosResponse } from "axios"
-import notice from "@/notice"
 
-
-type Instance = < Data= unknown >(config: AxiosRequestConfig) =>  Promise<ServiceSpace.MusicResultData<Data>>
+type Instance = < Data= unknown >(config: AxiosRequestConfig) =>  Promise<Data>
 
 export const musicRequest = axios.create({
 	baseURL: "http://cloud-music.pl-fe.cn/"
@@ -11,9 +9,9 @@ export const musicRequest = axios.create({
 {
 	musicRequest.interceptors.response.use((res: AxiosResponse<ServiceSpace.MusicResultData>) => {
 		if(res.data.code == 200) {
-			return res.data
+			return res.data.data
 		} else {
-			Promise.reject(res.data.message)
+			Promise.reject(res.data)
 		}
 	})
 }

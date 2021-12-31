@@ -17,7 +17,13 @@ function Home () {
 
 	const userInfo = useRecoilValue(userInfoAtom)
 
-	const GetHotDetail = useQuery("GetHotDetail", service.music.GetHotDetail)
+	const GetHotDetail = useQuery("GetHotDetail", service.music.GetHotDetail, {
+		onError(res) {
+			console.log("error:", res)
+		}
+	})
+
+	console.log(GetHotDetail.data)
 
 	return <div className={cm("container")}>
 		<div className={cm("flex m-t-5")}>
