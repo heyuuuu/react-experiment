@@ -2,21 +2,14 @@ import React from "react"
 import cssModules from "css-modules-name"
 import { useRecoilValue } from "recoil"
 import { useQuery } from "react-query"
-import { Input, Label } from "@/components"
-import { useTentacles, subscribe } from "@/store"
+import { Input, Label, Section } from "@/components"
+import { useTentacles } from "@/store"
 import { userInfoAtom } from "@/atom"
-import notice from "@/notice"
 import service from "@/service"
 import styles from "./index.less"
 
 
 const cm = cssModules(styles)
-
-subscribe(state => {
-	if(state.address) {
-		notice.message({title: state.address})
-	}
-}, ["address"])
 
 function Home () {
 	
@@ -34,14 +27,19 @@ function Home () {
 
 	return <div className={cm("container")}>
 		<div className={cm("flex m-t-5")}>
-			<Label>render:</Label> {new Date().valueOf()}
+			<Label>render:</Label>
+			<Section>{new Date().valueOf()}</Section>
 		</div>
 		<div className={cm("flex m-t-5")}>
-			<Label>state.name: </Label>
+			<Label>来自store.name: </Label>
 			<Input value={state.name} onChange={e => setState({name: e.target.value})} />
 		</div>
 		<div className={cm("flex m-t-5")}>
-			<Label>userId: </Label><Input value={userInfo.id} onChange={console.log} />
+			<Label>来自store.address: </Label>
+			<Section>{state.address}</Section>
+		</div>
+		<div className={cm("flex m-t-5")}>
+			<Label>来自atom.userinfo.id: </Label><Input value={userInfo.id} onChange={console.log} />
 		</div>
 	</div>
 }

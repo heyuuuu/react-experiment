@@ -37,6 +37,7 @@ function Children1() {
 			<Children11 />
 		</Modal>
 		<div className={cm("flex")}>
+			<Label>store.address:</Label>
 			<Input value={state.address} onChange={e => setState({address: e.target.value})} />
 			<Button className="m-l-5 m-r-5" onClick={() => setVisible(!visible)}>modal</Button>
 			<Button onClick={onClose}>关闭上级</Button>

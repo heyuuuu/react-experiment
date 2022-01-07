@@ -1,3 +1,7 @@
+:root {
+	--text-height: 32px;
+}
+
 html, body {
 	margin: 0;
 	padding: 0;

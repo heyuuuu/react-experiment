@@ -3,12 +3,13 @@ import { Button, Input, Label } from "@/components"
 
 function Tentacle() {
 	
-	const [state, setState] = useTentacles(["name", "address"])
+	const [state, setState] = useTentacles()
 
 	const reset = () => {
 		setState(() => ({
 			name: "",
-			address: ""
+			address: "",
+			message: ""
 		}))
 	}
 
@@ -17,9 +18,12 @@ function Tentacle() {
 	}
 
 	return <div className="flex">
+		<Label>store.name:</Label>
 		<Input value={state.name} onChange={e => setState({name: e.target.value})} />
-		<Label>address:</Label>
+		<Label>store.address:</Label>
 		<Input className="m-l-5" value={state.address} onChange={e => setState({address: e.target.value})} />
+		<Label>store.message:</Label>
+		<Input className="m-l-5" value={state.message} onChange={e => setState({message: e.target.value})} />
 		<Button className="m-l-5" onClick={reset}>重置</Button>
 		<Button className="m-l-5" onClick={click}>address</Button>
 	</div>

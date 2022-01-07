@@ -3,6 +3,7 @@ import { createTentacle } from "react-tentacle"
 type State = {
 	name: string
 	address: string
+	message: string
 }
 
 const { 
@@ -13,7 +14,8 @@ const {
 	unSubscribe
 } = createTentacle<State>({
 	name: "",
-	address: ""
+	address: "",
+	message: ""
 })
 
 export {

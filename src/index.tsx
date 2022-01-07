@@ -2,8 +2,10 @@ import ReactDOM from "react-dom"
 import { RecoilRoot } from "recoil"
 import { QueryClientProvider } from "react-query"
 import { Area } from "@/components"
+import { subscribe } from "@/store"
 import { tools } from "@/utils"
 import { useClientFit } from "@/hooks"
+import notice from "@/notice"
 
 import Home from "./pages/home"
 import Context from "./pages/context"
@@ -14,6 +16,12 @@ import "animate.css"
 import "./styles/index.css"
 
 const root = document.querySelector("#root")
+
+subscribe(state => {
+	if(state.message) {
+		notice.message({title: state.message})
+	}
+}, ["message"])
 
 function App() {
 
