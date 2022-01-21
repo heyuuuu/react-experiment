@@ -1,44 +1,90 @@
+import React, { useEffect } from "react"
 import ReactDOM from "react-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { RecoilRoot } from "recoil"
 import { QueryClientProvider } from "react-query"
-import { Area } from "@/components"
+import { Each } from "@/components"
 import { subscribe } from "@/store"
 import { tools } from "@/utils"
-import { useClientFit } from "@/hooks"
+import { useReactives } from "@/hooks"
 import notice from "@/notice"
 
-import Home from "./pages/home"
-import Context from "./pages/context"
-import Tentacle from "./pages/Tentacle"
-import RecoilPage from "./pages/Recoil"
+import WebEntry from "./web"
+import WapEntry from "./wap"
 
 import "animate.css"
 import "./styles/index.css"
 
 const root = document.querySelector("#root")
 
-subscribe(state => {
-	if(state.message) {
-		notice.message({title: state.message})
-	}
-}, ["message"])
+{
+	subscribe(state => {
+		if(state.message) {
+			notice.message({title: state.message})
+		}
+	}, ["message"])
 
-function App() {
+}
 
-	const ENV = useClientFit()
+function useFlexible() {
 
-	console.log("ENV:", ENV)
+	const [state, setState] = useReactives<{
+		env: "web" | "wap" | ""
+	}>({
+		env: ""
+	},["env"])
+
+	useEffect(() => {
+
+		const resize = () => {
+			if(document.body.offsetWidth > 750) {
+				document.documentElement.style.fontSize = ''
+				setState({env: "web"})
+			} else {
+				document.documentElement.style.fontSize = document.body.offsetWidth / 750 * 100 + 'px'
+				setState({env: "wap"})
+			}
+		}
+	
+		window.addEventListener("resize", resize)
+	
+		resize()
+
+		return () => {
+			window.removeEventListener("resize", resize)
+		}
+
+	}, [])
+
+	return state.env
+}
+
+function Root() {
+
+	const env = useFlexible()
 
 	return <RecoilRoot>
 		<QueryClientProvider client={tools.queryClient}>
-			<div>
-				<Area title="pages/home"><Home /></Area>
-				<Area title="pages/context" description="经典操作context以及modal运用"><Context /></Area>
-				<Area title="react-tentacle" description="灵活的状态管理"><Tentacle /></Area>
-				<Area title="recoil" description="分散式状态管理"><RecoilPage /></Area>
-			</div>
+			<BrowserRouter>
+				<Each name={env}>
+					<Each.Item name="web">
+						<React.Suspense fallback={null}>
+							<Routes>
+								<Route path="/" element={<WebEntry />} />
+							</Routes>
+						</React.Suspense>
+					</Each.Item>
+					<Each.Item name="wap">
+						<React.Suspense fallback={null}>
+							<Routes>
+								<Route path="/" element={<WapEntry />} />
+							</Routes>
+						</React.Suspense>
+					</Each.Item>
+				</Each>
+			</BrowserRouter>
 		</QueryClientProvider>
 	</RecoilRoot>
 }
 
-ReactDOM.render(<App />, root)
+ReactDOM.render(<Root />, root)
