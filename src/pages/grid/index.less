@@ -1,0 +1,38 @@
+.container {
+	display: inline-grid;
+	border-top: solid 1px silver;
+	border-left: solid 1px silver;
+	grid-template-columns: 60px 60px 50px 80px 90px;
+
+	.item {
+		border-right: solid 1px silver;
+		border-bottom: solid 1px silver;
+		background: #fff;
+	}
+
+	.col-1 {
+		grid-column-end: span 1;
+	}
+
+	.col-2 {
+		grid-column-end: span 2;
+	}
+
+	.col-3 {
+		grid-column-end: span 3;
+	}
+
+	.col-4 {
+		grid-column-end: span 4;
+	}
+
+	.col-5 {
+		grid-column-end: span 5;
+	}
+
+	.row-2 {
+		grid-row-end: span 2;
+		background-color: red;
+	}
+
+}
