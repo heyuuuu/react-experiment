@@ -1,10 +1,9 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useMemo } from "react"
+import { BrowserRouter } from "react-router-dom"
 import { Provider } from "react-redux"
 import ReactDOM from "react-dom"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { RecoilRoot } from "recoil"
 import { QueryClientProvider } from "react-query"
-import { Each } from "@/components"
 import { subscribe } from "@/store"
 import store from "@/store/redux"
 import { tools } from "@/utils"
@@ -65,26 +64,21 @@ function Root() {
 
 	const env = useFlexible()
 
+	const Entry = useMemo(() => {
+		if(env === "web") {
+			return WebEntry
+		} else {
+			return WapEntry
+		}
+	}, [env])
+
 	return <Provider store={store}>
 		<RecoilRoot>
 			<QueryClientProvider client={tools.queryClient}>
-				<BrowserRouter>
-					<Each name={env}>
-						<Each.Item name="web">
-							<React.Suspense fallback={null}>
-								<Routes>
-									<Route path="/" element={<WebEntry />} />
-								</Routes>
-							</React.Suspense>
-						</Each.Item>
-						<Each.Item name="wap">
-							<React.Suspense fallback={null}>
-								<Routes>
-									<Route path="/" element={<WapEntry />} />
-								</Routes>
-							</React.Suspense>
-						</Each.Item>
-					</Each>
+				<BrowserRouter basename="/">
+					<React.Suspense fallback={null}>
+						<Entry />
+					</React.Suspense>
 				</BrowserRouter>
 			</QueryClientProvider>
 		</RecoilRoot>

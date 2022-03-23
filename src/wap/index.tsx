@@ -6,7 +6,7 @@ const Home = React.lazy(() => import("./home"))
 function WapEntry() {
 	return <div>
 		<Routes>
-			<Route path="home" element={<Home />} />
+			<Route path="/" element={<Home />} />
 		</Routes>
 	</div>
 }
