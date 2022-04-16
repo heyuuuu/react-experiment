@@ -1,7 +1,7 @@
-import Home from "./home"
+import Experiment from "./Experiment"
 
 function Index() {
-	return <Home ></Home>
+	return <Experiment />
 }
 
 export default Index
