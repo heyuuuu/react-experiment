@@ -37,7 +37,7 @@ function Modal(props: Props) {
 	}
 }
 
-function Create(Node: React.ReactChild | React.JSXElementConstructor<unknown>, props?: Props) {
+function Create(Node: React.ReactChild | React.FC, props?: Props) {
 
 	const container = document.createElement("div")
 
