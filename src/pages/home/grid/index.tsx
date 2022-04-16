@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom"
 import cssModule from "css-modules-name"
 import styles from "./index.less"
-import { useEffect } from "react"
 
 const cm = cssModule(styles)
 

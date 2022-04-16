@@ -1,47 +1,21 @@
-import React from "react"
-import cssModules from "css-modules-name"
-import { useRecoilValue } from "recoil"
-import { useQuery } from "react-query"
-import { Input, Label, Section } from "@/components"
-import { useTentacles } from "@/store"
-import { userInfoAtom } from "@/atom"
-import service from "@/service"
-import styles from "./index.less"
+import { Area } from "@/components"
 
+import Home from "./home"
+import Context from "./context"
+import Tentacle from "./Tentacle"
+import RecoilPage from "./Recoil"
+import Grid from "./grid"
+import Redux from "./redux"
 
-const cm = cssModules(styles)
-
-function Home () {
-	
-	const [state, setState] = useTentacles(["name"])
-
-	const userInfo = useRecoilValue(userInfoAtom)
-
-	const GetHotDetail = useQuery("GetHotDetail", service.music.GetHotDetail, {
-		onError(res) {
-			console.log("error:", res)
-		}
-	})
-
-	console.log(GetHotDetail.data)
-
-	return <div className={cm("container")}>
-		<div className={cm("flex m-t-5")}>
-			<Label>render:</Label>
-			<Section>{new Date().valueOf()}</Section>
-		</div>
-		<div className={cm("flex m-t-5")}>
-			<Label>来自store.name: </Label>
-			<Input value={state.name} onChange={e => setState({name: e.target.value})} />
-		</div>
-		<div className={cm("flex m-t-5")}>
-			<Label>来自store.address: </Label>
-			<Section>{state.address}</Section>
-		</div>
-		<div className={cm("flex m-t-5")}>
-			<Label>来自atom.userinfo.id: </Label><Input value={userInfo.id} onChange={console.log} />
-		</div>
+function Index() {
+	return <div>
+		<Area title="pages/home"><Home /></Area>
+		<Area title="pages/context" description="经典操作context以及modal运用"><Context /></Area>
+		<Area title="react-tentacle" description="灵活的状态管理"><Tentacle /></Area>
+		<Area title="recoil" description="分散式状态管理"><RecoilPage /></Area>
+		<Area title="@reduxjs/toolkit" description="下一代状态管理"><Redux /></Area>
+		<Area title="Grid" description="栅格系统"><Grid /></Area>
 	</div>
 }
 
-export default React.memo(Home)
+export default Index
