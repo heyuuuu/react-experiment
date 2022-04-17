@@ -1,11 +1,9 @@
 import React from "react"
 import cssModules from "css-modules-name"
 import { useRecoilValue } from "recoil"
-import { useQuery } from "react-query"
 import { Input, Label, Section } from "@/components"
 import { useTentacles } from "@/store"
 import { userInfoAtom } from "@/atom"
-import service from "@/service"
 import styles from "./index.less"
 
 
@@ -16,14 +14,6 @@ function Home () {
 	const [state, setState] = useTentacles(["name"])
 
 	const userInfo = useRecoilValue(userInfoAtom)
-
-	const GetHotDetail = useQuery("GetHotDetail", service.music.GetHotDetail, {
-		onError(res) {
-			console.log("error:", res)
-		}
-	})
-
-	console.log(GetHotDetail.data)
 
 	return <div className={cm("container")}>
 		<div className={cm("flex m-t-5")}>

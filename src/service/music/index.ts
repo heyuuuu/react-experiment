@@ -2,7 +2,7 @@ import { musicRequest } from "../request"
 
 function GetHotDetail() {
 	return musicRequest<MusicSpace.HotItem[]>({
-		url: "/search/hotsss/detail"
+		url: "/search/hot/detail"
 	})
 }
 
