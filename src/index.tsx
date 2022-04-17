@@ -6,7 +6,7 @@ import { RecoilRoot } from "recoil"
 import { QueryClientProvider } from "react-query"
 import store from "@/store/redux"
 import { tools } from "@/utils"
-import Index from "./pages"
+import App from "./pages"
 
 import "animate.css"
 import "./styles/index.css"
@@ -18,11 +18,7 @@ function Root() {
 	return <Provider store={store}>
 		<RecoilRoot>
 			<QueryClientProvider client={tools.queryClient}>
-				<BrowserRouter basename="/">
-					<React.Suspense fallback={null}>
-						<Index />
-					</React.Suspense>
-				</BrowserRouter>
+				<App />
 			</QueryClientProvider>
 		</RecoilRoot>
 	</Provider>
