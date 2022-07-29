@@ -1,7 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 
 function Home() {
-    return <div>this is music-home</div>
+    const [content, setContent] = useState("")
+    return <div>
+        this is music-home
+        <input type="text" value={content} onChange={e => setContent(e.target.value)} />
+    </div>
 }
 
 export default Home

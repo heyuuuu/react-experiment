@@ -2,7 +2,7 @@ import React from "react"
 import cssModules from "css-modules-name"
 import { useRecoilValue } from "recoil"
 import { Input, Label, Section } from "@/components"
-import { useTentacles } from "@/store"
+import { useTentacle } from "@/store"
 import { userInfoAtom } from "@/atom"
 import styles from "./index.less"
 
@@ -11,7 +11,7 @@ const cm = cssModules(styles)
 
 function Home () {
 	
-	const [state, setState] = useTentacles(["name"])
+	const [state, setState] = useTentacle(["name"])
 
 	const userInfo = useRecoilValue(userInfoAtom)
 

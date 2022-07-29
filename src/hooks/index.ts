@@ -1,6 +1,5 @@
-import { hooks } from "react-tentacle"
-
-const { useReactives, useAnimation } = hooks
+import useReactives from "./useReactives"
+import useAnimation from "./useAnimation"
 
 export {
 	useAnimation,

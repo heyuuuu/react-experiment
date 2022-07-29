@@ -1,9 +1,9 @@
-import { useTentacles } from "@/store"
+import { useTentacle } from "@/store"
 import { Button, Input, Label } from "@/components"
 
 function Tentacle() {
 	
-	const [state, setState] = useTentacles()
+	const [state, setState] = useTentacle()
 
 	const reset = () => {
 		setState(() => ({

@@ -1,4 +1,4 @@
-import { createTentacle } from "react-tentacle"
+import { tentacle } from "react-tentacle"
 
 type State = {
 	name: string
@@ -6,22 +6,14 @@ type State = {
 	message: string
 }
 
-const { 
+export const {
+	listen,
 	dispatch,
-	useTentacles,
 	useListen,
-	subscribe,
-	unSubscribe
-} = createTentacle<State>({
+	useTentacle,
+	useInitTentacle
+} = tentacle<State>({
 	name: "",
 	address: "",
 	message: ""
 })
-
-export {
-	dispatch,
-	useListen,
-	subscribe,
-	unSubscribe,
-	useTentacles
-}

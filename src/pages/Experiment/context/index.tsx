@@ -1,7 +1,7 @@
 import { useState } from "react"
 import cssModules from "css-modules-name"
 import { useAnimation, useReactives } from "@/hooks"
-import { useTentacles } from "@/store"
+import { useTentacle } from "@/store"
 import { Modal, Button, Input, Label } from "@/components"
 import notice from "@/notice"
 
@@ -13,7 +13,7 @@ function Children11() {
 
 	const { onClose } = Modal.useModalConext()
 
-	const css = useAnimation("visible-hidden", "animated-duration-300 animate__animated animate__zoomIn")
+	const css = useAnimation(["animated-duration-300 animate__animated animate__zoomIn", "visible-hidden"])
 
 	return <div className={cm("modal-box", css)}>
 		<div>这是弹出的第二个窗口</div>
@@ -25,11 +25,11 @@ function Children1() {
 
 	const { onClose } = Modal.useModalConext()
 
-	const [state, setState] = useTentacles(["address"])
+	const [state, setState] = useTentacle(["address"])
 
 	const [visible, setVisible] = useState(false)
 
-	const css = useAnimation("visible-hidden", "animated-duration-300 animate__animated animate__zoomIn")
+	const css = useAnimation(["animated-duration-300 animate__animated animate__zoomIn", "visible-hidden"])
 
 	return <div className={cm("modal-box", css)}>
 		<div>这是弹出的第一个窗口</div>

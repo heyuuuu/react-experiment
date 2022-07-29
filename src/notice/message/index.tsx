@@ -15,7 +15,7 @@ function Message(props: Message) {
 
     const { onClose } = Modal.useModalConext()
 
-    const css = useAnimation("visible-hidden", "animated-duration-500 animate__animated animate__bounceInDown")
+    const css = useAnimation(["animated-duration-500 animate__animated animate__bounceInDown", "visible-hidden"])
 
     useEffect(() => {
         setTimeout(() => onClose?.(), 2000);
