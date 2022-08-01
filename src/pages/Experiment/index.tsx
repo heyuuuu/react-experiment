@@ -1,4 +1,5 @@
 import { Area } from "@/components"
+import { useInitTentacle } from "@/store"
 
 import Home from "./home"
 import Context from "./context"
@@ -8,6 +9,7 @@ import Grid from "./grid"
 import Redux from "./redux"
 
 function Index() {
+	useInitTentacle()
 	return <div>
 		<Area title="pages/home"><Home /></Area>
 		<Area title="pages/context" description="经典操作context以及modal运用"><Context /></Area>

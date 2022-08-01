@@ -1,18 +1,13 @@
 import { tentacle } from "react-tentacle"
 
-type State = {
-	name: string
-	address: string
-	message: string
-}
-
 export const {
+	state,
 	listen,
 	dispatch,
 	useListen,
 	useTentacle,
 	useInitTentacle
-} = tentacle<State>({
+} = tentacle({
 	name: "",
 	address: "",
 	message: ""

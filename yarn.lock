@@ -789,9 +789,9 @@ core-js-pure@^3.8.1:
   integrity sha512-ylOC9nVy0ak1N+fPIZj00umoZHgUVqmucklP5RT5N+vJof38klKn8Ze6KGyvchdClvEBr6LcQqJpI216LUMqYA==
 
 core-js@^3.19.3:
-  version "3.24.0"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.24.0.tgz#4928d4e99c593a234eb1a1f9abd3122b04d3ac57"
-  integrity sha512-IeOyT8A6iK37Ep4kZDD423mpi6JfPRoPUdQwEWYiGolvn4o6j2diaRzNfDfpTdu3a5qMbrGUzKUpYpRY8jXCkQ==
+  version "3.24.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.24.1.tgz#cf7724d41724154010a6576b7b57d94c5d66e64f"
+  integrity sha512-0QTBSYSUZ6Gq21utGzkfITDylE8jWC9Ne1D2MrhvlsZBI1x39OdDIVbzSqtgMndIy6BlHxBXpMGqzZmnztg2rg==
 
 core-util-is@~1.0.0:
   version "1.0.3"
@@ -2208,10 +2208,10 @@ react-router@6.3.0:
   dependencies:
     history "^5.2.0"
 
-react-tentacle@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-tentacle/-/react-tentacle-1.0.2.tgz#05e0c84f979203772604abb6b855674afa00a30b"
-  integrity sha512-namqqJoPr62zU1v4PLd6Q6sg+5oWgqxc26HnZ1jZ5hEiP4eIS29owBhkd/H6TyBkMR2p780nHqYhC/uCQyp0HA==
+react-tentacle@^1.0.3:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-tentacle/-/react-tentacle-1.0.4.tgz#6a8a8a44b8423425a63e53502d391d07c54ccfaa"
+  integrity sha512-FuD4vcRfZNGshl+3xAFj7rQXNE4dn/s9MLPGlBGnoA9miHN+MuegwCd2gZyiyGZUs9+ZfUJINFrKdgutiElqjw==
   dependencies:
     core-js "^3.19.3"
 
