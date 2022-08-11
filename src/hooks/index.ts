@@ -1,4 +1,4 @@
-import { useReactives } from "react-tentacle/hooks"
+import useReactives from "./useReactives"
 import useAnimation from "./useAnimation"
 
 export {

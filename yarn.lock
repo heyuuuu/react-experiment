@@ -788,11 +788,6 @@ core-js-pure@^3.8.1:
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.22.0.tgz#0eaa54b6d1f4ebb4d19976bb4916dfad149a3747"
   integrity sha512-ylOC9nVy0ak1N+fPIZj00umoZHgUVqmucklP5RT5N+vJof38klKn8Ze6KGyvchdClvEBr6LcQqJpI216LUMqYA==
 
-core-js@^3.19.3:
-  version "3.24.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.24.1.tgz#cf7724d41724154010a6576b7b57d94c5d66e64f"
-  integrity sha512-0QTBSYSUZ6Gq21utGzkfITDylE8jWC9Ne1D2MrhvlsZBI1x39OdDIVbzSqtgMndIy6BlHxBXpMGqzZmnztg2rg==
-
 core-util-is@~1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.3.tgz#a6042d3634c2b27e9328f837b965fac83808db85"
@@ -1632,6 +1627,16 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
+lodash.clonedeep@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  integrity sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==
+
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
+
 lodash@^4.17.14, lodash@^4.17.20, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
@@ -2208,12 +2213,13 @@ react-router@6.3.0:
   dependencies:
     history "^5.2.0"
 
-react-tentacle@^1.0.3:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/react-tentacle/-/react-tentacle-1.0.4.tgz#6a8a8a44b8423425a63e53502d391d07c54ccfaa"
-  integrity sha512-FuD4vcRfZNGshl+3xAFj7rQXNE4dn/s9MLPGlBGnoA9miHN+MuegwCd2gZyiyGZUs9+ZfUJINFrKdgutiElqjw==
+react-tentacle@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-tentacle/-/react-tentacle-1.1.0.tgz#f6b865aa670f4d797a685a1d299b5b1bb4d30715"
+  integrity sha512-dcX9jJtuQndEg25pE8DumZfzC7uF8ui56VtyfoOEQ7nuY9duUms9rCPpkmpUXNc7DoPqVUENfmcrU5N/0sZqFA==
   dependencies:
-    core-js "^3.19.3"
+    lodash.clonedeep "^4.5.0"
+    lodash.isequal "^4.5.0"
 
 react@^17.0.2:
   version "17.0.2"

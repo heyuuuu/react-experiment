@@ -6,7 +6,7 @@ import { useAnimation } from "@/hooks"
 import styles from "./index.less"
 
 interface Message {
-    title: string
+    title?: string
 }
 
 const cm = cssModules(styles)

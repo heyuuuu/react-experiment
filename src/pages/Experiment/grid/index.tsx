@@ -14,35 +14,24 @@ function Modal(props: Props) {
 
 function Grid() {
 
-	const [state, setState] = useReactives({time: 0, text: "", visible: false})
-
-	const M = (props: Props) => {
-		return ReactDOM.createPortal(Modal(props), document.body)
-	}
+	const [state, setState, reaction, mutation] = useReactives({time: 0, text: "", visible: false}, ["visible"])
 
 	const input = (text: string) => {
 		setState({text, visible: true})
+		console.log(state)
+		// setState({text, visible: true})
 	}
 
-	const css = useAnimation(["visible", "hidden"], state.visible)
+	// const css = useAnimation(["visible", "hidden"], state.visible)
 
 	return <div className={cm("container")}>
-		<div className={cm("mask", css)}><span onClick={() => setState({visible: false})}>===</span></div>
+		{/* <div className={cm("mask")}><span onClick={() => setState({visible: false})}>===</span></div> */}
 		<div className={cm("item col-1")}>{state.text}</div>
 		<div className={cm("item col-1")}><input defaultValue={state.text} onChange={ev => input(ev.target.value)} /></div>
-		<div className={cm("item col-1")}><span onClick={() => setState(() => ({time: 123}))}>3333</span></div>
-		<div className={cm("item col-1")}>4444</div>
-		<div className={cm("item col-1")}>5555</div>
-
-		<div className={cm("item row-2")}>xxx</div>
-		<div className={cm("item col-2")} style={{height: 100}}>2222</div>
-		<div className={cm("item col-1")}>4444</div>
-		<div className={cm("item col-1")}>5555</div>
-
-		<div className={cm("item col-2")} style={{height: 100}}>2222</div>
-		<div className={cm("item col-1")}>4444</div>
-		<div className={cm("item col-1")}>5555</div>
-		<M text="hello word!" />
+		{/* <div className={cm("item col-1")}><span onClick={() => setState(() => ({time: 123}))}>3333</span></div> */}
+		<div className={cm("item col-1")}></div>
+		<div className={cm("item col-1")}><button onClick={reaction}>reaction</button></div>
+		<div className={cm("item col-1")}></div>
 	</div>
 }
 

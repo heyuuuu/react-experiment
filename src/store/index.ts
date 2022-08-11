@@ -1,14 +1,28 @@
 import { tentacle } from "react-tentacle"
 
-export const {
+const {
 	state,
 	listen,
-	dispatch,
+	reactive: dispatch,
 	useListen,
-	useTentacle,
+	useTentacle: useTentacles,
 	useInitTentacle
 } = tentacle({
 	name: "",
 	address: "",
 	message: ""
 })
+
+function useTentacle (deps?: (keyof typeof state)[]) {
+	const { raw } = useTentacles(deps)
+	return [raw, dispatch] as [typeof raw, typeof dispatch]
+}
+
+export {
+	state,
+	listen,
+	dispatch,
+	useListen,
+	useTentacle,
+	useInitTentacle
+}

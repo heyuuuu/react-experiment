@@ -52,11 +52,13 @@ function Context() {
 		message: string
 	}>({
 		message: ""
-	})
+	}, ["modalVisible"])
 
 	const message = () => {
 		notice.message({title: state.message})
 	}
+
+	console.log("state:", state)
 
 	return <div>
 		<Modal mask middle visible={state.modalVisible} onClose={() => setState({modalVisible: false})}>
